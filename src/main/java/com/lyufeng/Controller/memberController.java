@@ -1,0 +1,7 @@
+package com.lyufeng.Controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class memberController {
+}

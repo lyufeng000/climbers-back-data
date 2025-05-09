@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: climbers-back-data
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/climbers_db
+    username: root
+    password: Lyufeng492105
+
+server:
+  port: 8080
