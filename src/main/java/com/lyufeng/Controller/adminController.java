@@ -5,10 +5,7 @@ import com.lyufeng.entity.Member;
 import com.lyufeng.entity.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -46,14 +43,30 @@ public class adminController {
 		return Result.success();
 	}
 	
+	//接受成员删除请求
+	//请求方法：DELETE
+	@DeleteMapping("/admin/members/{id}")
+	public Result delete(@PathVariable("id") Integer id){
+		log.info("接收到\"DELETE\"请求---");
+		log.info("开始发起删除---");
+		boolean flag = adminService.delete(id);
+		if (!flag){
+			log.info("删除失败---");
+			return Result.error("删除失败");
+		}
+		return Result.success();
+	}
+	
 	//接受修改成员请求
 	//请求方法：PUT
+	@PutMapping("/admin/members")
 	public Result edit(@RequestBody Member member){
 		log.info("接收到\"PUT\"请求???");
 		log.info("开始发起修改???");
 		boolean flag = adminService.edit(member);
-		if (flag){
-		
+		if (!flag){
+			log.info("修改失败???");
+			return Result.error("修改失败");
 		}
 		return Result.success();
 	}
