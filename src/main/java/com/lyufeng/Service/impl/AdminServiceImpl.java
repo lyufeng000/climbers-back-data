@@ -19,6 +19,12 @@ public class AdminServiceImpl implements AdminService {
 		return adminMapper.add(member) != 0;
 	}
 	
+	//删
+	@Override
+	public boolean delete(Integer id) {
+		return adminMapper.delete(id) != 0;
+	}
+	
 	//改
 	public boolean edit(Member member) {
 		return adminMapper.edit(member) != 0;
